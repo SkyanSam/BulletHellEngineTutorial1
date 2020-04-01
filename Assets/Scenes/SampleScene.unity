@@ -361,6 +361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1022746619}
   - component: {fileID: 1022746618}
+  - component: {fileID: 1022746620}
   m_Layer: 0
   m_Name: BulletSpawner
   m_TagString: Untagged
@@ -382,10 +383,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletResource: {fileID: 9193255209319294762, guid: b0601efaad02f5540b9e19fb84bc399d,
     type: 3}
-  minRotation: 1
-  maxRotation: 180
+  minRotation: 45
+  maxRotation: 360
   numberOfBullets: 8
   isRandom: 0
+  isParent: 0
   cooldown: 0.3
   bulletSpeed: 5
   bulletVelocity: {x: 1, y: 0}
@@ -403,3 +405,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1022746620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022746617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3a9c73a2844174aa736c0178ab97dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotation: 180
+  seconds: 1

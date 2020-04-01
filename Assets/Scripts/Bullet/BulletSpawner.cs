@@ -9,7 +9,7 @@ public class BulletSpawner : MonoBehaviour
     public float maxRotation;
     public int numberOfBullets;
     public bool isRandom;
-
+    public bool isParent = true;
     public float cooldown;
     float timer;
     public float bulletSpeed;
@@ -58,7 +58,7 @@ public class BulletSpawner : MonoBehaviour
     {
         for (int i = 0; i < numberOfBullets; i++)
         {
-            var fraction = (float)i / ((float)numberOfBullets - 1);
+            var fraction = (float)i / ((float)numberOfBullets - 1f);
             var difference = maxRotation - minRotation;
             var fractionOfDifference = fraction * difference;
             rotations[i] = fractionOfDifference + minRotation; // We add minRotation to undo Difference
@@ -79,11 +79,15 @@ public class BulletSpawner : MonoBehaviour
         for (int i = 0; i < numberOfBullets; i++)
         {
             spawnedBullets[i] = Instantiate(bulletResource, transform);
-            
             var b = spawnedBullets[i].GetComponent<Bullet>();
             b.rotation = rotations[i];
             b.speed = bulletSpeed;
             b.velocity = bulletVelocity;
+            if (!isParent)
+            {
+                spawnedBullets[i].transform.SetParent(null, true);
+                b.rotation += transform.eulerAngles.z;
+            }
         }
         return spawnedBullets;
     }
